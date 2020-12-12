@@ -1,0 +1,108 @@
+* { box-sizing: border-box; }
+
+.navbar:before{
+  display: flex;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    align-items: center;
+    background-color: transparent;
+    transition: background-color .3s ease-in;
+    padding: 12px 0 10px;
+    z-index: 9997;
+}
+ .navbar {
+  min-height: 100px;
+}
+.navbar img{
+  height: 450px;
+}
+
+.video-background {
+  background: #000;
+  position: fixed;
+  top: 0; right: 0; bottom: 0; left: 0;
+  z-index: -99;
+}
+.video-foreground,
+.video-background iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+.content{
+  text-align: center;
+  font-size: 2rem;  
+  padding: 8%;
+  background: rgba(0,0,0,0.3);
+}
+.content h1{
+  color: #fff;
+  font-family: "Trirong", serif;
+  font-size: 6rem;
+  line-height: 1.8;
+  font-weight: 700;
+}
+.content p{
+  color: #000;
+  font-family: 'Andika New Basic', sans-serif;
+  font-weight: 500;
+  border: 5px solid #000;
+  background-color: lightgrey;
+}
+.box {
+  float: right;
+  background: linear-gradient(to right, #1dd3bd, #fff);
+  color: white;
+  width: 230px;
+  height: 50px;
+  text-align: center;
+  font-family: sans-serif;
+  font-weight: 600;
+  border: 1px solid blue;
+  border-radius: 2em;
+  transform: perspective(500px) rotateY(-15deg);
+  text-shadow: 6px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 2px 0 0 5px rgba(0, 0, 255, 0.2);
+  transition: 0.5s;
+  position: relative;
+  overflow: hidden;
+}
+
+.box:hover {
+  transform: perspective(500px) rotateY(15deg);
+  text-shadow: -6px 3px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: -2px 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.box::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, white, transparent);
+  left: -100%;
+  transition: 0.5s;
+}
+
+.box:hover::before {
+  left: 100%;
+}
+
+/*.vid-info a { display: block; color: #fff; text-decoration: none; background: rgba(0,0,0,0.5); transition: .6s background; border-bottom: none; margin: 1rem auto; text-align: center; }*/
+@media (min-aspect-ratio: 16/9) {
+  .video-foreground { height: 300%; top: -100%; }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-foreground { width: 300%; left: -100%; }
+}
+@media all and (max-width: 600px) {
+.vid-info { width: 50%; padding: .5rem; }
+.vid-info h1 { margin-bottom: .2rem; }
+}
+@media all and (max-width: 500px) {
+.vid-info .acronym { display: none; }
+}
